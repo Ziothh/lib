@@ -1,0 +1,62 @@
+{
+    "compilerOptions": {
+        // Dirst etc
+        "outDir": "./dist", // * Change this later
+        // "module": "esnext",
+        "module": "ESNext",
+        "target": "ESNext",
+        "lib": ["ESNext", "DOM", "DOM.Iterable"],
+        "declaration": true, // Adds {name}.d.ts to the build
+
+        // Settings that change often
+        // ! Dev
+        // "sourceMap": true,
+        "isolatedModules": false,
+        "noUnusedLocals": false,
+        "noImplicitAny": false,
+        "noUnusedParameters": false,
+        "inlineSourceMap": true,
+
+        // ! Prod
+        // "sourceMap": false,
+        // "noUnusedLocals": true,
+        // "isolatedModules": true,
+        // "noImplicitAny": true,
+
+        // Standard settings
+        "experimentalDecorators": true,
+        "allowJs": true,
+        "moduleResolution": "Node",
+        // // "rootDir": "src",
+        // // "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": false,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "skipLibCheck": true,
+        "allowSyntheticDefaultImports": true,
+        //"removeComments": true, // was true
+        "removeComments": false,
+        "esModuleInterop": true,
+        "strict": true,
+        "noFallthroughCasesInSwitch": true,
+        "resolveJsonModule": true,
+        // "noEmit": true, // if true: Will not compile code and only type check
+        // "typeRoots": ["./node_modules/@types/", "./src/@types/"]
+        "typeRoots": ["./node_modules/@types/", "@types", "types", "node_modules/@types/"],
+        "baseUrl": "./src",
+        "paths": {
+            "*": ["./*"],
+            "@node_modules/*": ["../node_modules/*"]
+            // "types": "types"
+            // "@types/*": ["./@types/*"]
+        }
+    },
+    "include": ["./src/**/*", "src/types/", "src/types/**/*"],
+    "exclude": [
+        "./node_modules",
+        "./dist"
+        //"scripts",
+        //"webpack"
+    ]
+}
