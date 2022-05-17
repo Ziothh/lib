@@ -1,5 +1,0 @@
-export * from "./imageInput"
-export * from "./password"
-export * from "./select"
-export * from "./textSubmit"
-export * from "./videoInput"

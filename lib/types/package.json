@@ -1,0 +1,21 @@
+{
+    "name": "@ziothh/types",
+    "version": "0.0.1",
+    "description": "",
+    "scripts": {
+        "build": "tsc"
+    },
+    "repository": {
+        "type": "git"
+    },
+    "author": "Louis Giët",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist/index.js"
+    ],
+    "license": "ISC",
+    "devDependencies": {
+        "csstype": "^3.0.11"
+    }
+}

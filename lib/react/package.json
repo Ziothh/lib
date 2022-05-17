@@ -1,0 +1,26 @@
+{
+    "name": "@ziothh/react",
+    "version": "0.0.1",
+    "description": "",
+    "scripts": {
+        "build": "tsc",
+        "rebuild": "rm -r dist && npm run build",
+        "watch": "tsc -w"
+    },
+    "repository": {
+        "type": "git"
+    },
+    "author": "Louis Giët",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist/index.js",
+        "dist/helpers",
+        "dist/hooks",
+        "dist/types"
+    ],
+    "license": "ISC",
+    "devDependencies": {
+        "@ziothh/types": "^0.0.1"
+    }
+}
