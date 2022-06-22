@@ -1,0 +1,1 @@
+export const booleanToBinary = (bool: boolean) => bool ? 1 : 0

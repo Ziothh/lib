@@ -1,4 +1,4 @@
-import { getAllByDataAttribute, getByDataAttribute } from "../DOM"
+import { getAllByDataAttribute, getByDataAttribute } from "../../base/src/DOM"
 
 class GalleryImage {
     public image: string

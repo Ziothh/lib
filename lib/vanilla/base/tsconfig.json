@@ -52,7 +52,7 @@
             // "@types/*": ["./@types/*"]
         }
     },
-    "include": ["base/src/**/*"],
+    "include": ["src/**/*"],
     "exclude": [
         "./node_modules",
         "./dist"

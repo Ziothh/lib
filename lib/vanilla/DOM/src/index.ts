@@ -12,6 +12,7 @@
 
 export * from "./helpers"
 export * from "./elements"
+export * from "./events"
 
 /**
  * Renders a element in the given parent

@@ -1,17 +1,21 @@
 import { useEffect, useRef } from "react"
 
-const useEventListener = <T extends keyof DocumentEventMap, E extends HTMLElement | Document | Window>(
+const useEventListener = <T extends keyof DocumentEventMap, E extends HTMLElement | Document | Window | EventTarget = Document>(
     type: T, 
     listener: (e: {target: E} & DocumentEventMap[T]) => void,
-    options: {
+    {
+        autoAdd = true,
+        // @ts-ignore
+        element = document,
+        fireOnce = false
+    }: {
         element?: E,
         fireOnce?: boolean
+        autoAdd?: boolean
     } = {}
 ) => {
     const listenerRef = useRef<(e: any) => any>()
     listenerRef.current = listener
-
-    const {element = document, fireOnce = false} = options
 
     const addEventListener = () => element.addEventListener(type, listenerRef.current!, {once: fireOnce})
     const removeEventListener = () => element.removeEventListener(type, listenerRef.current!)
@@ -27,7 +31,7 @@ const useEventListener = <T extends keyof DocumentEventMap, E extends HTMLElemen
         remove: removeEventListener,
         firesOnce: fireOnce,
         element,
-    }
+    } as const
 }
 
 export default useEventListener

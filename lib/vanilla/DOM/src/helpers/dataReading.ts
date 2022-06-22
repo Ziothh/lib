@@ -1,8 +1,4 @@
-/**
- * @param {string} fileType
- * @param {string[] | string} possibleTypes
- */
-const isValidFileType = (fileType, possibleTypes) => {
+const isValidFileType = (fileType: string, possibleTypes: string[] | string) => {
     if (typeof possibleTypes === "string") possibleTypes = possibleTypes.split(",").map(pt => pt.replaceAll(" ", ""))
     return possibleTypes.some(
     pType => {
