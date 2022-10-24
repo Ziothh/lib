@@ -1,0 +1,20 @@
+{
+  "name": "@ziothh/vanilla-components",
+  "version": "0.0.2",
+  "description": "",
+  "repository": {
+    "type": "git"
+  },
+  "author": "Louis Giët",
+  "main": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@ziothh/vanilla-base": "^0.0.1"
+  }
+}

@@ -1,0 +1,13 @@
+lockfileVersion: 5.4
+
+specifiers:
+  '@ziothh/vanilla-base': ^0.0.1
+
+dependencies:
+  '@ziothh/vanilla-base': 0.0.1
+
+packages:
+
+  /@ziothh/vanilla-base/0.0.1:
+    resolution: {integrity: sha512-dBGUqL/8ObwPY00vozPt7spb/x8cBSijOU4c37RRHF5OxM0frNrr+eHiS7LpIVmcxScgWNEtDgHWt2im9ajQGA==}
+    dev: false

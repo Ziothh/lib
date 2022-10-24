@@ -1,5 +1,4 @@
-import { $, $$ } from "lib/vanilla/dist"
-import EventListenerController from "./EventListenerController"
+import { $, $$, EventListenerController } from "@ziothh/vanilla-base"
 
 /** TODO: you can make this better by calculating the middle of the page container
  * (without navbar, ..., etc) instead of the middle of the viewport.

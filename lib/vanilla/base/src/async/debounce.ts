@@ -8,7 +8,7 @@
  * @default delay = 500 // (in ms)
  */
 const debounce = <A extends Parameters<any>>(callback: (...args: A) => void, delay = 500) => {
-    let timeout: NodeJS.Timeout | null = null;
+    let timeout: number | null = null;
 
     return ((...args: A) => {
         clearTimeout(timeout!)

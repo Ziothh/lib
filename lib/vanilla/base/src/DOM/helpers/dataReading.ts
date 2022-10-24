@@ -1,14 +1,15 @@
+
 const isValidFileType = (fileType: string, possibleTypes: string[] | string) => {
     if (typeof possibleTypes === "string") possibleTypes = possibleTypes.split(",").map(pt => pt.replaceAll(" ", ""))
     return possibleTypes.some(
     pType => {
         // If the possible file type is like "category/*""
-        const category = pType.match(/[a-zA-Z]*\/\*/)?.shift().replace("*","")
+        const category = pType.match(/[a-zA-Z]*\/\*/)?.shift()?.replace("*","")
         if (category) {
             if (fileType.match(category)) return true
         } else {
             // Check for basic file types ".ext"
-            if (fileType.match(/[\w]*\/(.*)/)[1] === pType.replace(".", "")) {
+            if (fileType?.match(/[\w]*\/(.*)/)?.[1] === pType.replace(".", "")) {
                 return true
             }
         }

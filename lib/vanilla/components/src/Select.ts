@@ -1,4 +1,4 @@
-import { createElement } from "../DOM"
+import { createElement } from "@ziothh/vanilla-base"
 
 export default class SelectController {
     static componentName = "select"

@@ -1,4 +1,4 @@
-import type { AnyObject, CSSProperties } from "@ziothh/types";
+import type { AnyObject, CSSProperties, } from "@ziothh/types";
 import type { HTMLInputTypeAttribute } from "react";
 
 interface ElementAttributes extends AnyObject {

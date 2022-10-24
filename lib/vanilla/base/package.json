@@ -1,5 +1,5 @@
 {
-    "name": "@ziothh/vanilla",
+    "name": "@ziothh/vanilla-base",
     "version": "0.0.1",
     "description": "",
     "scripts": {
@@ -7,21 +7,22 @@
     },
     "repository": {
         "type": "git",
-        "url": "git@github.com:Ziothh/noReact.git"
+        "url": "git@github.com:Ziothh/lib.git"
     },
     "author": "Louis Giët",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "files": [
-        "dist/**/*"
+        "dist"
     ],
     "license": "ISC",
     "devDependencies": {
         "@types/react": "^17.0.43",
+        "@ziothh/types": "^0.0.4",
         "csstype": "^3.0.10",
-        "typescript": "^4.5.5"
+        "typescript": "^4.5.5",
+        "ts-node": "^10.4.0"
     },
     "dependencies": {
-        "ts-node": "^10.4.0"
     }
 }
