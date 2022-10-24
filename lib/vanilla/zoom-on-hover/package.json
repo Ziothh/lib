@@ -1,0 +1,22 @@
+{
+    "name": "@ziothh/zoom-on-hover",
+    "version": "1.1.0",
+    "description": "",
+    "scripts": {
+        "build": "tsc"
+    },
+    "keywords": [],
+    "license": "ISC",
+    "repository": {
+        "type": "git"
+    },
+    "author": "Louis Giët",
+    "main": "dist/index.d.ts",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "dependencies": {
+        "@ziothh/vanilla": "^0.0.5"
+    }
+}
