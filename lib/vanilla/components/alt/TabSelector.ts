@@ -1,56 +1,150 @@
-interface ClassNames {
-    activeButton?: string
-    activeTab?: string
-}
-
-interface Options {
-    classNames?: ClassNames
-}
+import {createElement} from "@ziothh/vanilla-base"
 
 export default class TabSelectorController {
-    public readonly classNames: ClassNames
-    private readonly linkMap = new Map<number, {
-        button: HTMLButtonElement
-        tab: HTMLElement
-    }>()
+    static componentName = "TabSelector"
 
-    constructor({
-        classNames
-    }: Options = {}) {
-        this.classNames = {
-            activeButton: "active-tab-selector",
-            activeTab: "active-tab",
-            ...classNames
+    readonly baseElements: {
+        select: HTMLSelectElement,
+        options: HTMLOptionElement[]
+    }
+    readonly customElements: {
+        select: HTMLDivElement,
+        options: HTMLDivElement[]
+    }
+    readonly elementsMap: {[key: string]: {
+        baseElement: HTMLOptionElement,
+        customElement: HTMLDivElement,
+        tabElement: HTMLElement
+    }}
+    
+    readonly options: string[]
+
+    readonly activeClass: string
+    readonly customOptionClass = `${TabSelectorController.componentName}-custom-select-option`
+
+    constructor(
+        readonly container: HTMLElement = document.querySelector<HTMLDivElement>(`[data-component="${TabSelectorController.componentName}"]`)!,
+        {
+            activeClass = `${TabSelectorController.componentName}--active`
+        } = {}
+    ) {
+        // Options
+        this.activeClass = activeClass
+
+        // Elements
+        const HTMLSelect = container.querySelector("select")!
+        this.baseElements = {
+            select: HTMLSelect,
+            options: [...HTMLSelect.querySelectorAll("option")!]
         }
+
+        // Creating the custom elements
+        this.customElements = {
+            select: this.createCustomSelect(),
+            options: []
+        }        
+
+        // Mapping all elements to the option values
+        this.elementsMap = {}
+        const optionsStringValues: string[] = []
+
+        this.baseElements.options.forEach(o => {
+            const optionStringValue = o.value
+
+            optionsStringValues.push(optionStringValue)
+
+            const co = createElement(
+                "div",
+                {
+                    class: `${this.customOptionClass}`,
+                    dataset: {
+                        tabId: optionStringValue
+                    },
+                },
+                o.innerText
+            )
+
+            co.addEventListener("click", () => {
+                this.setActiveOption(o.value)
+            })
+
+            this.elementsMap[optionStringValue] = {
+                baseElement: o,
+                customElement: co,
+                tabElement: document.querySelector(`[data-tab-id="${optionStringValue}"]`)!
+            }
+
+            this.customElements.options.push(co)
+            this.customElements.select.append(co)
+        })
+
+        // Mapping all option string values
+        this.options = optionsStringValues
+
+        // Finally injecting into the dom
+        this.baseElements.select.parentElement!.appendChild(this.customElements.select)
+
+        this.updateVisualState()
     }
 
-    get currentActive() {
-        return [...this.linkMap.values()].find(
-            elements => elements.button.classList.contains(this.classNames.activeButton!)
-            || elements.tab.classList.contains(this.classNames.activeTab!)
+    isValidOption(optionValue: string) {
+        return this.options.find(o => o === optionValue) !== undefined
+    }
+
+    private raiseOptionValueError(optionValue: string) {
+        throw Error(`The option ${optionValue} is not a valid option. Valid options are: [${this.options.join(", ")}]`)
+    }
+  
+
+    getOptionElementByValue (optionValue: string) {
+        if (this.options && !this.isValidOption(optionValue)) this.raiseOptionValueError(optionValue)
+
+        return this.baseElements.options.find(
+            o => o.value === optionValue
+        )!
+    }
+
+    get activeOption() {
+        return this.baseElements.select.value
+    }
+
+    private createCustomSelect () {
+        // Hide the original select element
+        this.baseElements.select.style.display = "none"
+
+        return createElement(
+            "div",
+            {class: `${TabSelectorController.componentName}-custom-select`},
         )
     }
 
-    setActive(tabID: number) {
-        const prev = this.currentActive
-        const next = this.linkMap.get(tabID)
+    setActiveOption(optionValue: string) {
+        if (optionValue !== this.activeOption) {
+            if (!this.isValidOption(optionValue)) this.raiseOptionValueError(optionValue)
 
-        if (prev !== undefined) {
-            prev.button.classList.remove(this.classNames.activeButton!)
-            prev.tab.classList.remove(this.classNames.activeTab!)
+            this.baseElements.select.value = optionValue
+            this.elementsMap[optionValue].baseElement.selected = true
+
+            this.updateVisualState()
         }
 
-        next!.button.classList.add(this.classNames.activeButton!)
-        next!.tab.classList.add(this.classNames.activeTab!)
-    } 
+        return this
+    }
 
-    linkButtonToTab(button: HTMLButtonElement, tab: HTMLElement) {
-        if (button === undefined) throw new Error("The linked button can not be undefined")
-        if (tab === undefined) throw new Error("The linked tab can not be undefined")
+    private updateVisualState () {
+        const activeOption = this.activeOption
 
-        const ID = this.linkMap.size
-        this.linkMap.set(ID, {button, tab})
+        this.options.forEach(o => {
+            const mapEntry = this.elementsMap[o]
 
-        button.addEventListener("click", () => this.setActive(ID))
+            if (o === activeOption) {
+                mapEntry.customElement.classList.add(this.activeClass)
+                mapEntry.tabElement.style.display = ""
+            } else {
+                mapEntry.customElement.classList.remove(this.activeClass)
+                mapEntry.tabElement.style.display = "none"
+            }
+
+        })
     }
 }

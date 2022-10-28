@@ -2,11 +2,11 @@ lockfileVersion: 5.4
 
 specifiers:
   '@ziothh/vanilla-base': ^0.0.3
-  '@ziothh/vanilla-components': ^0.0.3
+  '@ziothh/vanilla-components': ^0.0.6
 
 dependencies:
   '@ziothh/vanilla-base': 0.0.3
-  '@ziothh/vanilla-components': 0.0.3
+  '@ziothh/vanilla-components': 0.0.6
 
 packages:
 
@@ -14,8 +14,8 @@ packages:
     resolution: {integrity: sha512-I+zLSYqdwArMhz9THyltD4vbGuxPn9Opk3lPo2KYr4X0ZKS+I/zhPsrwiXgRnGeX68THhfQn+J3zFOjPJ3ktcA==}
     dev: false
 
-  /@ziothh/vanilla-components/0.0.3:
-    resolution: {integrity: sha512-PJKvqBsna8LZFc4tmCEaQbPuAdzHehK7AD7ChxJeF5xpLKQ+EVQOnK5liswS7x5olTK0esJhQ+RwacplPhVuvQ==}
+  /@ziothh/vanilla-components/0.0.6:
+    resolution: {integrity: sha512-bOwPd+A6VKXFlSkO1ew9V7/yezubD8DoC3EJJpsztdEPObBDLAWUEuIy25FNJ2W/EGrXz7a6kXruxLY+eFdr4Q==}
     dependencies:
       '@ziothh/vanilla-base': 0.0.3
     dev: false

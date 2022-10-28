@@ -1,3 +1,5 @@
 export {default as ImageGalleryController} from "./ImageGallery"
 export {default as NavbarController} from "./Navbar"
 export {default as SelectController} from "./Select"
+export {default as ModalController} from "./Modal"
+export {default as TabSelectorController} from "./TabSelector"

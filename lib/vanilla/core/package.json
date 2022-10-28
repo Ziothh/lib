@@ -1,6 +1,6 @@
 {
   "name": "@ziothh/vanilla",
-  "version": "0.0.5",
+  "version": "0.0.8",
   "description": "",
   "repository": {
     "type": "git"
@@ -16,6 +16,6 @@
   },
   "dependencies": {
     "@ziothh/vanilla-base": "^0.0.3",
-    "@ziothh/vanilla-components": "^0.0.3"
+    "@ziothh/vanilla-components": "^0.0.6"
   }
 }
